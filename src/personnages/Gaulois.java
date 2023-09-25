@@ -32,6 +32,10 @@ public String toString() {
 }
 
 public static void main(String[] args) {
-	//TODO
+	Gaulois asterix = new Gaulois ("asterix" , 8);
+	System.out.println(asterix);
+	asterix.prendreParole();
+	asterix.parler("blablabla");
+	asterix.frapper(null);
 }
 }
