@@ -8,11 +8,8 @@ public class Scenario {
 	public static void main(String[] args) {
 		Gaulois asterix = new Gaulois ("asterix" , 8);
 		Romain Minus = new Romain("Minus", 6);
-//		System.out.println(asterix);
-//		System.out.println(Minus);
-//		asterix.prendreParole();
+
 		asterix.parler("Bonjour à tous");
-//		Minus.prendreParole();
 		Minus.parler("UN GAU... UN GAUGAU...");
 		asterix.frapper(Minus);
 		asterix.frapper(Minus);
