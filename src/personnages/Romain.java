@@ -40,6 +40,6 @@ public class Romain {
 		System.out.println(minus);
 		minus.prendreParole();
 		minus.parler("blablabla");
-//		Minus.frapper(null);
+		
 	}
 }
