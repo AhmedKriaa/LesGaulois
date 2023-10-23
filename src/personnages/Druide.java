@@ -1,56 +1,55 @@
 package personnages;
-
-import java.util.Random;
+import java.util.*;
 
 public class Druide {
 	private String nom;
-	private int forcePotion = 1;
-	private int effetPotionMax;
 	private int effetPotionMin;
-
+	private int effetPotionMax;
+	private int forcePotion=1;
+	private Random nbAleatoire= new Random();
+	
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
-		this.effetPotionMax = effetPotionMax;
 		this.effetPotionMin = effetPotionMin;
-		parler("Bonjour, je suis le druide " + nom + " et ma potion peut aller d'une force " + effetPotionMin + " Ã  "
-				+ effetPotionMax + ".");
+		this.effetPotionMax = effetPotionMax;
+		parler("Bonjour, je suis le druide "+ nom + " et ma potion peut aller d'une force "+ effetPotionMin + " à "+ effetPotionMax + ".");
 	}
+	
 
 	public String getNom() {
 		return nom;
 	}
-
+	
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "<<" + texte + ">>");
+		System.out.println(prendreParole() + "« " + texte + "».");
 	}
+
 
 	private String prendreParole() {
-		return "Le druide" + nom + ":";
+		return "Le druide " + nom + " : ";
 	}
-
-	public void preparerPotion() {
-		Random random = new Random();
-		forcePotion = random.nextInt(effetPotionMax + 1 - effetPotionMin) + effetPotionMin;
-		if (forcePotion > 7) {
-			parler("J'ai prÃ©parÃ© une super potion de force " + forcePotion);
-
+	
+	public void preparerPotion() {  
+		forcePotion= nbAleatoire.nextInt(effetPotionMin,effetPotionMax);
+		
+		if (forcePotion>=7) {
+			parler("J'ai préparé une super potion de force "+forcePotion);
 		} else {
-			parler(" Je n'ai pas trouvÃ© tous les ingrÃ©dients, ma potion est seulement de force " + forcePotion);
+			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force "+forcePotion);
 		}
 	}
-
+	
 	public void booster(Gaulois gaulois) {
-		if (gaulois.getNom().equals("Obelix")) {
-			parler("Non, ObÃ©lix !... Tu nâ€™auras pas de potion magique !");
+		if (gaulois.getNom().equals("Obélix")) {
+			parler("Non, Obélix !... Tu n’auras pas de potion magique!");
 		} else {
 			gaulois.boirePotion(forcePotion);
 		}
 	}
-
+	
 	public static void main(String[] args) {
-		Druide paronamix = new Druide("Paronamix", 5, 10);
-		paronamix.preparerPotion();
-
+		Druide panoramix= new Druide("Panoramix",5,10);
+		panoramix.preparerPotion();
 	}
-
+	
 }
